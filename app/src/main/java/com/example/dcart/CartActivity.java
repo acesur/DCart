@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.dcart.adapters.CartListAdapter;
+
 import java.util.List;
 
 public class CartActivity extends AppCompatActivity {
@@ -30,6 +32,7 @@ public class CartActivity extends AppCompatActivity {
         String name = mSPManipulation.getName();
         String mobile = mSPManipulation.getMobile();
         mDBManipulation = DBManipulation.getInstance(this, name + mobile);
+        itemList = ShoppingCartList.getInstance();
         itemList.clear();
         itemList.addAll(mDBManipulation.selectAll());
         //itemList = mDBManipulation.selectAll();
@@ -50,7 +53,7 @@ public class CartActivity extends AppCompatActivity {
         mButtonCheckout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(CartActivity.this, CheckOutActivity.class);
+                Intent intent = new Intent(CartActivity.this, CheckoutActivityutActivity.class);
             startActivity(intent);
             }
         });
